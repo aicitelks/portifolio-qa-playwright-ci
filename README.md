@@ -74,9 +74,9 @@ Para ver o relatório: aba **Actions**, escolha a execução e baixe o artefato 
 
 ## Próximos passos
 
-- [ ] Adicionar Page Object Model
-- [:heavy_check_mark:] Ampliar a cobertura (logout, usuário bloqueado, campos vazios)
-- [:heavy_check_mark:] Executar em múltiplos navegadores (Firefox e WebKit)
+- Adicionar Page Object Model
+- Ampliar a cobertura (logout, usuário bloqueado, campos vazios) :heavy_check_mark:
+- Executar em múltiplos navegadores (Firefox e WebKit) :heavy_check_mark:
 
 ---
 
