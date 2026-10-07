@@ -25,6 +25,11 @@ test.describe("Validação de Autenticação", () => {
 });
 
 test.describe("Validação de Autenticação - Testes Negativos", () => {
+  const errorMessageDefault = "do not match any user";
+  const errorMessageLockedOutUser = "Sorry, this user has been locked out.";
+  const errorMessageEmptyUsername = "Username is required";
+  const errorMessageEmptyPassword = "Password is required";
+
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
@@ -36,7 +41,7 @@ test.describe("Validação de Autenticação - Testes Negativos", () => {
 
     const errorMessage = page.locator('[data-test="error"]');
 
-    await expect(errorMessage).toContainText("do not match any user");
+    await expect(errorMessage).toContainText(errorMessageDefault);
   });
 
   test("Deve exibir erro com usuário inválido", async ({ page }) => {
@@ -46,7 +51,7 @@ test.describe("Validação de Autenticação - Testes Negativos", () => {
 
     const errorMessage = page.locator('[data-test="error"]');
 
-    await expect(errorMessage).toContainText("do not match any user");
+    await expect(errorMessage).toContainText(errorMessageDefault);
   });
 
   test("Deve exibir erro de usuário bloqueado", async ({ page }) => {
@@ -56,10 +61,7 @@ test.describe("Validação de Autenticação - Testes Negativos", () => {
 
     const errorMessage = page.locator('[data-test="error"]');
 
-    await expect(errorMessage).toContainText(
-      "Sorry, this user has been locked out.",
-      "Usuário bloqueado",
-    );
+    await expect(errorMessage).toContainText(errorMessageLockedOutUser);
   });
 
   test("Deve exibir erro com campo usuário vazio", async ({ page }) => {
@@ -67,7 +69,7 @@ test.describe("Validação de Autenticação - Testes Negativos", () => {
 
     const errorMessage = page.locator('[data-test="error"]');
 
-    await expect(errorMessage).toContainText("Username is required");
+    await expect(errorMessage).toContainText(errorMessageEmptyUsername);
   });
 
   test("Deve exibir erro com campo senha vazio", async ({ page }) => {
@@ -76,6 +78,6 @@ test.describe("Validação de Autenticação - Testes Negativos", () => {
 
     const errorMessage = page.locator('[data-test="error"]');
 
-    await expect(errorMessage).toContainText("Password is required");
+    await expect(errorMessage).toContainText(errorMessageEmptyPassword);
   });
 });
