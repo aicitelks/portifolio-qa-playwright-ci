@@ -29,7 +29,7 @@ jobs:
 
       # 4. Instala os navegadores do Playwright
       - name: Instalar Navegadores do Playwright
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps
 
       # 5. Executa os testes em modo headless (sem interface gráfica)
       - name: Executar Testes Automatizados
