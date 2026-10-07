@@ -32,6 +32,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
     // baseURL: "https://the-internet.herokuapp.com",
     baseURL: "https://www.saucedemo.com",
+    testIdAttribute: "data-test",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
     screenshot: "only-on-failure",

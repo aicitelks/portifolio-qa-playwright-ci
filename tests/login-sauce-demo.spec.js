@@ -23,4 +23,17 @@ test.describe("Validação de Autenticação", () => {
       "do not match any user",
     );
   });
+
+  test("Deve realizar logout com sucesso", async ({ page }) => {
+    await page.getByPlaceholder("Username").fill("standard_user");
+    await page.getByPlaceholder("Password").fill("secret_sauce");
+    await page.getByRole("button", { name: "Login" }).click();
+
+    await page.getByRole("button", { name: "Open Menu" }).click();
+    await expect(page.getByTestId("logout-sidebar-link")).toBeVisible();
+
+    await page.getByTestId("logout-sidebar-link").click();
+
+    await expect(page).toHaveURL("/");
+  });
 });
